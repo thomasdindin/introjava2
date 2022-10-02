@@ -1,9 +1,8 @@
 package com.example;
-import java.util.Random;
 import java.util.Scanner;
+import java.util.Random;
 
-public class App {
-
+public class td1 {
     static void ex1(){
         int heure = 12;
         int minute = 34;
@@ -58,27 +57,11 @@ public class App {
         scan.close();
 
     }
-
-    static void phrase(){
-        Scanner scan1 = new Scanner(System.in);
-        System.out.print("Entrez un nom: ");
-        String nom1 = scan1.nextLine();
-        System.out.print("Entrez un nombre: ");
-        int nombre = scan1.nextInt();
-        scan1.nextLine();
-        System.out.print("Entrez un nom: ");
-        String nom2 = scan1.nextLine();
-        System.out.print("Entrez un adjectif: ");
-        String adjectif = scan1.nextLine()+ ".";
-        System.out.println("Il était une fois un "+ nom1 + " qui avait "+ nombre + " " +nom2 +". Cela le rendait très "+ adjectif);
-        scan1.close();
-    }
     public static void main(String[] args) {
         //ex1();
         //ex2();
         //ex3();
         //ex4();
-        //ex5();   
-        //phrase();
+        ex5();   
     }
 }
