@@ -1,9 +1,7 @@
 package com.example;
 import java.time.LocalDate;
-import java.time.Year;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -151,7 +149,7 @@ public class td2 {
         String res = "";
         for (int i=0; i<s.length();i++){
             res = res + s.charAt(end);
-            end -=1;
+            end--;
         }
         if (res.toLowerCase().equals(s.toLowerCase())){
             return true;
@@ -232,6 +230,7 @@ public class td2 {
     //ex17
     static String chiffrer(String message, int cle){
         String res ="";
+        cle = cle % 26;
         for (int i=0; i<message.length();i++){
             if (Character.isLetter(message.charAt(i))){
                 int as_ch=Character.toLowerCase(message.charAt(i));
@@ -249,6 +248,7 @@ public class td2 {
     //ex18
     static String dechiffrer(String message, int cle){
         String res ="";
+        cle = cle % 26;
         for (int i=0; i<message.length();i++){
             if (Character.isLetter(message.charAt(i))){
                 int as_ch=Character.toLowerCase(message.charAt(i));
@@ -283,7 +283,6 @@ public class td2 {
     }
 
     public static void main(String[] args) {
-        //phrase();
         //demanderEntierEtAfficherParité(13);
         //couleur();
         //System.out.print(estCapitalisé("bonjour"));
@@ -302,8 +301,37 @@ public class td2 {
         //System.out.println(deuxSens2("Éric notre valet alla te laver ton ciré"));
         //System.out.println(nbMots("Bonjour tout le monde"));
         //anniversaire();
-        //System.out.println(chiffrer("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 11));
+        //System.out.println(chiffrer("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 26));
         //System.out.println(dechiffrer("LMNOPQRSTUVWXYZABCDEFGHIJK", 11));
         //guess();
+
+
+        /*
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Pièces de 1 : ");
+        int un = scan.nextInt();
+        System.out.println("Pièces de 5 : ");
+        int cinq = scan.nextInt()*5;
+        System.out.println("Pièces de 10 : ");
+        int dix = scan.nextInt()*10;
+        System.out.println("Pièces de 20 : ");
+        int vingt = scan.nextInt()*20;
+        System.out.println("Pièces de 50 : ");
+        int cinquante = scan.nextInt()*50;
+
+        scan.close();
+
+        int sum = un + cinq+ dix + vingt +cinquante;
+        int diff = (100-sum>0) ? 100-sum : sum-100;
+        if (sum == 100){
+            System.out.println("Vous avez exactement de quoi vous payer le café !");
+        }
+        else if (sum <= 100){
+            System.out.println("Il vous manque " + diff + " centimes pour prendre un café.");
+        }
+        else{
+            System.out.println("Il vous restera "+ diff + " centimes après avoir pris votre café !");
+        }
+        */
     }
 }
