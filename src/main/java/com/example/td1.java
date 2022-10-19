@@ -57,11 +57,28 @@ public class td1 {
         scan.close();
 
     }
+    static int[] nbPlates(double poids){
+        int[] weight_array = new int[6];
+        double[] weight_index = {20,15,10,5,2.5,1.25};
+        double totalWeight = (poids-20)/2;
+
+        for (int i = 0; i < 6; i++){
+            var count = 0;
+            while (totalWeight>=weight_index[i]){
+                count++;
+                totalWeight-=weight_index[i];
+            }
+            weight_array[i]=count;
+        }
+        return weight_array;
+        
+    }
     public static void main(String[] args) {
         //ex1();
         //ex2();
         //ex3();
         //ex4();
-        ex5();   
+        //ex5();   
+        for (int i:nbPlates(107.5)) System.out.println(i);;
     }
 }

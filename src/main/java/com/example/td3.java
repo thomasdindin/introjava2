@@ -1,5 +1,6 @@
 package com.example;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class td3 {
@@ -249,8 +250,9 @@ public class td3 {
 
     static boolean jeuDeLoie(int lancer){
         int res = 0;
+        Random generateur = new Random();
         for (int i=1; i<=lancer;i++){
-            res+=new Random().nextInt(7);
+            res+=generateur.nextInt(7);
         }
         if (res==20){
             return true;
@@ -258,6 +260,133 @@ public class td3 {
         else{
             return false;
         }
+    }
+
+    static void motif17(int taille){
+        int whites = (3*taille);
+        String left_border = "__/";
+        String right_border="\\__";
+        int double_dots = 0;
+        String double_slash = "/\\";
+        int count_dbslash = (3*taille)-1;
+
+        String pipes = "";
+        for (int i = 1; i <= taille-1; i++){
+            for (int y = 1; y <= whites; y++){
+                pipes+=(" ");
+            }
+            pipes+=("||\n");
+        }
+
+        for (int y = 1; y <= whites; y++){
+            pipes+=(" ");
+        }
+        pipes += "||";
+        System.out.println(pipes);
+
+
+        for (int i = 1; i <= taille; i++){
+            for (int y = 1;y  <= whites-3; y++){System.out.print(" ");}
+            System.out.print(left_border);
+            for (int y = 1; y <= double_dots;y++){
+                System.out.print(":");
+            }
+            System.out.print("||");
+            for (int y = 1; y <= double_dots;y++){
+                System.out.print(":");
+            }
+            System.out.println(right_border);
+            double_dots+=3;
+            whites -=3;
+        }
+
+        System.out.print("|");
+        for (int i = 1; i <= (taille*6); i++) System.out.print("\"");
+        System.out.println("|");
+
+        for (int i = 1; i <= taille; i++ ){
+            for (int y = 1; y <= whites;y++){
+                System.out.print(" ");
+            }
+            System.out.print("\\_");
+            String res = "";
+            for (int y= 1; y <= count_dbslash; y++){
+                res+=double_slash;
+            }
+            res+="_/";
+            System.out.println(res);
+            count_dbslash-=2;
+            whites+=2;
+        }
+
+        System.out.println(pipes);
+
+        whites = 3*taille - ((taille/2)+2);
+
+        for (int i =1; i <= taille*4; i++){
+            for (int y =1; y <= whites+1; y++){
+                System.out.print(" ");
+            }
+            for (int z= 1; z <= 2; z++){
+                System.out.print("|");
+                for (int y =1; y <= taille/2; y++){
+                    System.out.print("%");
+                }
+                System.out.print("|");
+            }
+            System.out.println();
+
+            
+        }
+
+        double_dots = 0;
+        whites = 3*taille;
+
+        for (int i = 1; i <= taille; i++){
+            for (int y = 1;y  <= whites-3; y++){System.out.print(" ");}
+            System.out.print(left_border);
+            for (int y = 1; y <= double_dots;y++){
+                System.out.print(":");
+            }
+            System.out.print("||");
+            for (int y = 1; y <= double_dots;y++){
+                System.out.print(":");
+            }
+            System.out.println(right_border);
+            double_dots+=3;
+            whites -=3;
+        }
+
+
+
+        System.out.print("|");
+        for (int i = 1; i <= (taille*6); i++) System.out.print("\"");
+        System.out.println("|");
+
+
+    }
+
+    static void guess(){
+        Scanner scan = new Scanner(System.in);
+        int value = new Random().nextInt(101);
+        boolean found = false;
+        
+        while (!found){
+            System.out.print("Entrez votre choix : ");
+            int guess = scan.nextInt();
+            if(value == guess){
+                System.out.println("Quel bol, vous avez trouvé !");
+                found = true;
+            }
+            else if (value > guess){
+                System.out.println("C'est plus");
+            }
+            else if (value < guess){
+                System.out.println("C'est moins");
+            }
+        }
+        scan.close();
+
     }
     public static void main(String[] args){
         //Output 1: 4, 2
@@ -364,10 +493,15 @@ public class td3 {
         //motif13(6);
         //motif14(37);
         //motif15();
-        //motif16(11);
+        //motif16(5);
         //jeuDeLoie(5);
+        //motif17(15);
+        guess();
+        /* Exercice du prof 
+
         int count = 0;
         while (!jeuDeLoie(5)) count ++;
-        System.out.println(count);
+        System.out.println("Vous avez gagné au bout de " + count +" tentatives.");*/
+
     }
 }
